@@ -10,14 +10,28 @@ class MyPokemon extends Component {
             myPokemon: []
         };
         this.releasePokemon = this.releasePokemon.bind(this);
+        this.nicknameHandler = this.nicknameHandler.bind(this);
     }
     releasePokemon(id, name) {
-        axios.delete(`/api/me/${id}`).then(response => {
-            this.setState({ myPokemon: response.data });
-        });
+        axios
+            .delete(`/api/me/${id}`)
+            .then(response => {
+                this.setState({ myPokemon: response.data });
+            })
+            .catch(console.log);
         alert(`${name} was released :(`);
     }
-    nicknameHandler(event, id) {}
+    nicknameHandler(e, val, id) {
+        e.preventDefault();
+        // console.log("id: ", id);
+        // console.log("val: ", val);
+        axios
+            .put(`/api/me/${id}`, { nickname: val })
+            .then(response => {
+                this.setState({ myPokemon: response.data });
+            })
+            .catch(console.log);
+    }
     componentDidMount() {
         axios.get("/api/me").then(response => {
             this.setState({
@@ -32,6 +46,7 @@ class MyPokemon extends Component {
                     key={index}
                     pokemon={pokemon}
                     release={this.releasePokemon}
+                    nickname={this.nicknameHandler}
                 />
             );
         });

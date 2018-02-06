@@ -22,6 +22,7 @@ app.get("/api/pokemon/all", pokeCtrl.getAllPokemon);
 app.get("/api/me/", pokeCtrl.getMyPokemon);
 app.post("/api/me/", pokeCtrl.catchPokemon);
 app.delete("/api/me/:id", pokeCtrl.releasePokemon);
+app.put("/api/me/:id", pokeCtrl.nicknamePokemon);
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {

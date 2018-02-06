@@ -40,7 +40,8 @@ module.exports = {
     },
     nicknamePokemon: (req, res) => {
         const db = req.app.get("db");
-        const { id, nickname } = req.body;
+        const { nickname } = req.body;
+        const id = req.params.id;
         db
             .change_pokemon_nickname([id, nickname])
             .then(response => {

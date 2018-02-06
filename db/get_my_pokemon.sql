@@ -1,1 +1,1 @@
-SELECT * FROM my_pokemon ORDER BY name asc;
+SELECT * FROM my_pokemon;
