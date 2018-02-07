@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 // import "./Navigation.css";
 
-const Navigation = props => {
+const Navigation = () => {
     return (
         <header className="App-header">
             <h1 className="App-title">My Pokedex</h1>
