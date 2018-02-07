@@ -4,7 +4,8 @@ class OwnedPokemon extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            nicknameInput: ""
+            nicknameInput: "",
+            namePreface: ""
         };
     }
     changeHandler(event) {
@@ -12,9 +13,18 @@ class OwnedPokemon extends Component {
             nicknameInput: event.target.value
         });
     }
+    componentWillReceiveProps(nextProps) {
+        console.log("nextProps: ", nextProps);
+        if (nextProps.pokemon.nickname === this.state.nicknameInput) {
+            this.setState({
+                namePreface: "UPDATED NICKNAME: "
+            });
+        }
+    }
     render() {
         return (
             <div>
+                {this.state.namePreface}
                 {this.props.pokemon.nickname || this.props.pokemon.name}{" "}
                 <button
                     onClick={e =>

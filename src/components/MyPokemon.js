@@ -23,8 +23,6 @@ class MyPokemon extends Component {
     }
     nicknameHandler(e, val, id) {
         e.preventDefault();
-        // console.log("id: ", id);
-        // console.log("val: ", val);
         axios
             .put(`/api/me/${id}`, { nickname: val })
             .then(response => {
@@ -33,7 +31,7 @@ class MyPokemon extends Component {
             .catch(console.log);
     }
     componentDidMount() {
-        axios.get("/api/me").then(response => {
+        axios.get(`/api/me`).then(response => {
             this.setState({
                 myPokemon: response.data
             });

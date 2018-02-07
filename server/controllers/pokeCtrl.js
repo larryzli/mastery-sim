@@ -3,7 +3,7 @@ const axios = require("axios");
 module.exports = {
     getAllPokemon: (req, res) => {
         axios
-            .get("http://pokeapi.co/api/v2/pokemon")
+            .get(`http://pokeapi.co/api/v2/pokemon?limit=${req.query.limit}`)
             .then(response => {
                 return res.status(200).json(response.data);
             })
